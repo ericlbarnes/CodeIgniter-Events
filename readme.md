@@ -2,6 +2,11 @@
 
 Build extendible applications with an events system.
 
+Version 1.0
+
+* Author: "Eric Barnes":http://ericlbarnes.com/
+* Author: "Dan Horrigan":http://dhorrigan.com/
+
 ## Public Methods
 
 ### register
@@ -27,6 +32,27 @@ Checks if the event has any listeners
 
 * $event *string* - The name of the event
 * return *bool*
+
+## Usage Overview
+
+All Events functions are static.
+
+You can add a listener to an event with the register() function:
+
+<pre><code>Events::register('event_name_here', array('class_name_or_object_ref', 'method_name'));</code></pre>
+
+The second parameter of register() is an array that is callable via "call_user_func()":http://us2.php.net/manual/en/function.call-user-func.php.
+
+You trigger an Event by calling the trigger() function:
+
+<pre><code>$event_return = Events::trigger('event_name_here', $data, 'string');</code></pre>
+
+The 3rd parameter is the type of data you wish trigger() to return.  Your options are as follows:
+
+* 'array'
+* 'json'
+* 'serialized'
+* 'string' (the default)
 
 ## Example Usage
 
