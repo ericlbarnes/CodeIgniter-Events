@@ -4,8 +4,8 @@ Build extendible applications with an events system.
 
 Version 1.0
 
-* Author: "Eric Barnes":http://ericlbarnes.com/
-* Author: "Dan Horrigan":http://dhorrigan.com/
+* Author: [Eric Barnes](http://ericlbarnes.com/ "Eric Barnes")
+* Author: [Dan Horrigan](http://dhorrigan.com/ "Dan Horrigan")
 
 ## Public Methods
 
