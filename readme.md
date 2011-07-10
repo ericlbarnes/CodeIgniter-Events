@@ -41,7 +41,7 @@ You can add a listener to an event with the register() function:
 
 <pre><code>Events::register('event_name_here', array('class_name_or_object_ref', 'method_name'));</code></pre>
 
-The second parameter of register() is an array that is callable via [call_user_func()](http://us2.php.net/manual/en/function.call-user-func.php "call_user_func()").
+The second parameter of register() is an array that is callable via [call_user_func()](http://us2.php.net/manual/en/function.call-user-func.php "call_user_func").
 
 You trigger an Event by calling the trigger() function:
 
