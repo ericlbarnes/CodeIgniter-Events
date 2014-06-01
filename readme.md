@@ -7,6 +7,11 @@ Version 1.0.0
 * Author: [Eric Barnes](http://ericlbarnes.com/ "Eric Barnes")
 * Author: [Dan Horrigan](http://dhorrigan.com/ "Dan Horrigan")
 
+##### Additions (Core Extention)
+
+* Author: [Nathan Macnamara](https://github.com/nathanmac "Nathan Macnamara")
+
+
 ## Public Methods
 
 ### register
@@ -59,7 +64,7 @@ The 3rd parameter is the type of data you wish trigger() to return.  Your option
 Because events need to be registered before being used it is a good idea to have a system
 in place to load any of these before you trigger any events.
 
-Here is an example using a third party library to register the event.
+Here is an example loading the event handler to register the event.
 
 <pre>
 // Example Welcome Controller
@@ -71,9 +76,8 @@ class Welcome extends CI_Controller {
 		parent::__construct();
 		// Load Library
 		$this->load->library('events');
-		// Load our class that registers an event. See class Test below.
-		$this->load->add_package_path(APPPATH.'third_party/test/');
-		$this->load->library('test');
+
+		$this->load->event('test');
 	}
 
 	public function index()
@@ -82,7 +86,7 @@ class Welcome extends CI_Controller {
 	}
 }
 
-// Example third_party/test/libaries/test.php
+// Example events/test.php
 
 class Test {
 
