@@ -14,47 +14,42 @@ class MY_Loader extends CI_Loader {
     }
 
     /** Load a events module * */
-    public function event($event = '', $params = NULL, $object_name = NULL) {
-
+    public function event($event = '', $params = NULL, $object_name = NULL)
+    {
         if (is_array($event))
-            return $this->libraries($event);
+        {
+            foreach ($event as $class)
+            {
+                $this->library($class, $params);
+            }
 
-        $class = strtolower(basename($event));
-
-        if (isset($this->_ci_classes[$class]) AND $_alias = $this->_ci_classes[$class])
-            return CI::$APP->$_alias;
-
-        ($_alias = strtolower($object_name)) OR $_alias = $class;
-
-        list($path, $_event) = Modules::find($event, $this->_module, 'events/');
-
-        /* load library config file as params */
-        if ($params == NULL) {
-            list($path2, $file) = Modules::find($_alias, $this->_module, 'config/');
-            ($path2) AND $params = Modules::load_file($file, $path2, 'config');
+            return;
         }
 
-        if ($path === FALSE) {
-
-            $this->_ci_events_class($event, $params, $object_name);
-            $_alias = $this->_ci_classes[$class];
-        } else {
-
-            Modules::load_file($_event, $path);
-
-            $event = ucfirst($_event);
-            CI::$APP->$_alias = new $event($params);
-
-            $this->_ci_classes[$class] = $_alias;
+        if ($event == '' OR isset($this->_base_classes[$event]))
+        {
+            return FALSE;
         }
 
-        return CI::$APP->$_alias;
+        if ( ! is_null($params) && ! is_array($params))
+        {
+            $params = NULL;
+        }
+
+        $this->_ci_events_class($event, $params, $object_name);
     }
 
     /** Load an array of events * */
-    public function events($events) {
-        foreach ($events as $_event)
-            $this->event($_event);
+    public function events($event = '', $params = NULL, $object_name = NULL)
+    {
+        if (is_array($event))
+        {
+            foreach ($event as $class)
+            {
+                $this->library($class, $params);
+            }
+        }
+        return;
     }
 
     /**
