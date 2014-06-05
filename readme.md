@@ -1,3 +1,13 @@
+# No longer maintained 
+
+I am not longer going to maintain this project. Please visit this fork to get one that is maintained: 
+
+https://github.com/nathanmac/CodeIgniter-Events
+
+
+---
+
+
 # CodeIgniter Events Library
 
 Build extendible applications with an events system.
